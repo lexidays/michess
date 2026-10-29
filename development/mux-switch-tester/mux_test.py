@@ -7,8 +7,8 @@ readings are saved to a CSV so every channel has a number on record.
 
 Wiring (breakout pin -> Pi):
   1  VDD -> 3.3 V        12 GND -> GND        27 VSS -> GND
-  17 A0  -> GPIO5        16 A1  -> GPIO6      15 A2  -> GPIO13
-  18 EN  -> GPIO19       (3, 13, 14 not connected)
+  17 A0  -> GPIO17       16 A1  -> GPIO27     15 A2  -> GPIO22
+  18 EN  -> GPIO23       (3, 13, 14 not connected)
 
 Pinout used for the prompts:
   DA = 28, DB = 2
@@ -21,10 +21,10 @@ from datetime import datetime
 
 from gpiozero import DigitalOutputDevice
 
-A0 = DigitalOutputDevice(5)
-A1 = DigitalOutputDevice(6)
-A2 = DigitalOutputDevice(13)
-EN = DigitalOutputDevice(19)
+A0 = DigitalOutputDevice(17)
+A1 = DigitalOutputDevice(27)
+A2 = DigitalOutputDevice(22)
+EN = DigitalOutputDevice(23)
 
 
 def select(channel: int) -> None:
@@ -58,7 +58,7 @@ def main() -> None:
     print("\n=== EN LOW: everything should be off ===")
     select(1)
     r = ask("Ohms from pin 19 (S1A) to pin 28 (DA), expect OL: ")
-    rows.append(["EN low", "1", "19-28", r])
+    rows.append(["EN low", "000", "19-28", r])
 
     for ch in range(1, 9):
         select(ch)

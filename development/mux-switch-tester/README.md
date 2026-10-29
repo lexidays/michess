@@ -56,18 +56,32 @@ pins 15–28 run up the right side.
 | 1 VDD | 3.3 V | 1 or 17 |
 | 12 GND | GND | any GND |
 | 27 VSS | GND | any GND |
-| 17 A0 | GPIO5 | 29 |
-| 16 A1 | GPIO6 | 31 |
-| 15 A2 | GPIO13 | 33 |
-| 18 EN | GPIO19 | 35 |
+| 17 A0 | GPIO17 | 11 |
+| 16 A1 | GPIO27 | 13 |
+| 15 A2 | GPIO22 | 15 |
+| 18 EN | GPIO23 | 16 |
 
 The mux runs from the Pi's **3.3 V, not 5 V**, so nothing on it can ever sit
 above what the Pi's GPIO pins can take. (The ADG1607 works from a 3.3–16 V
 single supply with 3 V logic-compatible inputs.) This supply is only for the
 switching test; the supply for RF use is a separate question for step 5.
 
-These GPIOs keep clear of the ST25R3916B reader's SPI pins and its IRQ on
-GPIO25, so the reader can stay wired.
+These GPIOs keep clear of every pin ST's reader demo uses, so the reader can
+stay wired and the demo can run at the same time as the mux scripts:
+
+- SPI: GPIO 7–11
+- IRQ: GPIO25
+- Status LEDs for ST's own expansion boards: GPIO 5, 6, 13, 19, 26 and 24
+  (from `linux_demo/platform/st25r3916b/rfal_platform.h`). The demo claims
+  these even with no LEDs fitted.
+
+GPIO18 is also left free, as the usual pin for driving NeoPixels later.
+
+**History:** step 3 was first run on GPIO 5, 6, 13 and 19. The switching
+test passed, but those turned out to be four of the demo's LED pins: with
+`mux_select.py` holding them, the demo stopped with `GPIO init failed`, and
+without it the demo would have driven the mux address lines itself. The mux
+was moved to GPIO 17, 27, 22 and 23 the same evening.
 
 ## Procedure
 
