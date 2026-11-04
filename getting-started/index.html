@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -470,32 +470,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-create-a-virtual-environment" class="md-nav__link">
+  <a href="#2-repository-wide-or-per-harness-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Create a virtual environment
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-install-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Install dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-run-the-board-reader" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Run the board reader
+        2. Repository-wide or per-harness workflow
       
     </span>
   </a>
@@ -674,32 +652,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-create-a-virtual-environment" class="md-nav__link">
+  <a href="#2-repository-wide-or-per-harness-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Create a virtual environment
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-install-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Install dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-run-the-board-reader" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Run the board reader
+        2. Repository-wide or per-harness workflow
       
     </span>
   </a>
@@ -784,6 +740,7 @@
 <li>Raspberry Pi OS (Bookworm or later)</li>
 <li>Python 3.11+</li>
 <li>Git</li>
+<li><a href="https://docs.astral.sh/uv/">uv</a> (optional; see Development section)</li>
 </ul>
 <hr />
 <h2 id="software-setup">Software Setup</h2>
@@ -791,48 +748,49 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/steve-birch/michess.git
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>michess
 </code></pre></div>
-<h3 id="2-create-a-virtual-environment">2. Create a virtual environment</h3>
+<h3 id="2-repository-wide-or-per-harness-workflow">2. Repository-wide or per-harness workflow</h3>
+<p>The repository contains multiple independent harnesses under <code>development/</code>. Each harness is a self-contained Python project with its own <code>pyproject.toml</code>, virtual environment, and lockfile. You can either use a single global virtual environment and install needed dependencies, or run each harness in-place using <code>uv</code> which will create and manage per-harness virtual environments automatically.</p>
+<p>To run the main board reader (if available) via a repo-wide virtual environment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>python<span class="w"> </span>software/main.py
 </code></pre></div>
-<h3 id="3-install-dependencies">3. Install dependencies</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<p>To run a development harness using <code>uv</code> (recommended for prototypes):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>development/nfc-matrix-tester
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>uv<span class="w"> </span>run<span class="w"> </span>nfc-matrix-tester
 </code></pre></div>
-<h3 id="4-run-the-board-reader">4. Run the board reader</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>software/main.py
-</code></pre></div>
+<p><code>uv run</code> will create the virtual environment and install dependencies automatically on first use.</p>
 <hr />
 <h2 id="hardware-setup">Hardware Setup</h2>
 <p>Before running the software you'll need the physical board assembled and wired. See the <a href="../hardware/">Hardware</a> page for:</p>
 <ul>
 <li>Component list and sourcing</li>
-<li>Wiring diagram</li>
+<li>Wiring diagram / multiplexer topology</li>
 <li>PCB and antenna assembly</li>
 </ul>
 <hr />
 <h2 id="development-setup">Development Setup</h2>
-<p>If you want to work on the codebase without physical hardware, the board reader supports a simulated mode:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>software/main.py<span class="w"> </span>--simulate
-</code></pre></div>
-<p>This lets you develop the chess engine integration and LED controller logic without a connected board.</p>
+<p>There's no simulated mode yet: the current code is hardware bring-up harnesses under <code>development/</code>, and each needs the real hardware. A simulated board, so the chess engine and LED logic can be developed without one, is planned for the main <code>software/</code> stack.</p>
 <hr />
 <h2 id="repository-layout">Repository Layout</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>michess/
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── hardware/               # Schematics, PCB layouts, BOM, antenna designs
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── firmware/               # Low-level microcontroller code (if applicable)
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>├── software/
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>│   ├── board_reader/       # NFC matrix scanning
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│   ├── chess_engine/       # Stockfish/UCI integration
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│   └── led_controller/     # LED matrix control
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>├── docs/
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│   └── architecture/       # System diagrams and design notes
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>└── tests/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>michess/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── hardware/               # Schematics, PCB layouts, BOM, antenna designs
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── firmware/               # Low-level microcontroller code (if applicable)
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── software/
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   ├── board_reader/       # NFC matrix scanning
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   ├── chess_engine/       # Stockfish/UCI integration
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   └── led_controller/     # LED matrix control
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>├── development/            # Throwaway hardware/learning test harnesses (each a self-contained project)
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>├── docs/
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>└── tests/
 </code></pre></div>
 <hr />
 <h2 id="next-steps">Next Steps</h2>
 <ul>
 <li>Read the <a href="../hardware/">Hardware</a> page to understand the physical build</li>
 <li>Read the <a href="../software/">Software</a> page for architecture details and how to contribute code</li>
+<li>For prototype development, see the README inside each harness under <code>development/</code> (start with <code>development/st25r-reader-tester/README.md</code>) for wiring and run instructions</li>
 </ul>
 
 
@@ -889,10 +847,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
