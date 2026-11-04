@@ -31,6 +31,8 @@ _autosave-*
 fp-info-cache
 # Lock files while a file is open in KiCad
 *.lck
+# KiCad local history (backups kept on this machine)
+.history/
 
 # KiCad export outputs (regenerate from source)
 gerbers/
