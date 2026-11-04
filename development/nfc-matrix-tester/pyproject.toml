@@ -1,0 +1,33 @@
+[project]
+name = "nfc-matrix-tester"
+version = "0.1.0"
+description = "Practice harness for wiring a PN532 NFC reader to a Raspberry Pi, growing into an 8x8 grid tester for the antenna multiplexer."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "adafruit-circuitpython-pn532>=2.4",
+    "adafruit-blinka>=8.0",
+    "rpi-gpio>=0.7.1",
+]
+
+[project.scripts]
+nfc-matrix-tester = "nfc_matrix_tester.main:main"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.3.0",
+    "pytest>=8.0",
+]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["src", "tests"]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["board", "busio", "adafruit_pn532.*"]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

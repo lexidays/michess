@@ -1,0 +1,28 @@
+state,A2A1A0,pins,reading
+leads,,probes shorted,0.0
+EN low,1,19-28,0
+ch1 on,000,19-28,9.2
+ch1 on,000,11-2,9.3
+"ch1 on, ch2 should be off",000,20-28,0
+ch2 on,001,20-28,9.4
+ch2 on,001,10-2,9.5
+"ch2 on, ch3 should be off",001,21-28,0
+ch3 on,010,21-28,9.5
+ch3 on,010,9-2,9.4
+"ch3 on, ch4 should be off",010,22-28,0
+ch4 on,011,22-28,9.3
+ch4 on,011,8-2,9.4
+"ch4 on, ch5 should be off",011,23-28,0
+ch5 on,100,23-28,9.4
+ch5 on,100,7-2,9.4
+"ch5 on, ch6 should be off",100,24-28,0
+ch6 on,101,24-28,9.3
+ch6 on,101,6-2,9.3
+"ch6 on, ch7 should be off",101,25-28,0
+ch7 on,110,25-28,9.4
+ch7 on,110,5-2,9.3
+"ch7 on, ch8 should be off",110,26-28,0
+ch8 on,111,26-28,9.2
+ch8 on,111,4-2,9.4
+"ch8 on, ch1 should be off",111,19-28,0
+EN low (after),111,26-28,0

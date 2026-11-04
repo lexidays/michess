@@ -1,0 +1,9 @@
+[project]
+name = "st25-reader-tester"
+version = "0.1.0"
+description = "Bring-up checks for the ST25R3916B MINI NFC reader on a Raspberry Pi"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "spidev>=3.8",
+]

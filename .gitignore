@@ -5,6 +5,7 @@ __pycache__/
 *.pyd
 .Python
 venv/
+.venv/
 env/
 .env
 *.egg-info/
@@ -25,28 +26,31 @@ htmlcov/
 *.bck
 *-backups/
 _autosave-*
-*.kicad_prl        # Per-user local settings
+# Per-user local settings
+*.kicad_prl
 fp-info-cache
+# Lock files while a file is open in KiCad
+*.lck
 
 # KiCad export outputs (regenerate from source)
 gerbers/
-*.gbr
-*.drl
-*.dxf
-*.svg
-*.pdf
-*.pos
-*.rpt
-*.net
-*.xml
-*.zip
+hardware/pcb/**/*.gbr
+hardware/pcb/**/*.drl
+hardware/pcb/**/*.dxf
+hardware/pcb/**/*.svg
+hardware/pcb/**/*.pdf
+hardware/pcb/**/*.pos
+hardware/pcb/**/*.rpt
+hardware/pcb/**/*.net
+hardware/pcb/**/*.xml
+hardware/pcb/**/*.zip
 
 # ── EasyEDA / other PCB tools ─────────────────────────────────────────────────
 *.epro
 
 # ── FreeCAD / OpenSCAD (enclosure) ────────────────────────────────────────────
 *.FCBak
-*.stl              # Regenerate from source CAD files
+
 
 # ── IDEs & editors ────────────────────────────────────────────────────────────
 .vscode/
@@ -64,3 +68,6 @@ site/
 config.local.py
 secrets.py
 .env.local
+
+# -- Other
+vendor/

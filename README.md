@@ -34,6 +34,7 @@ michess/
 │   ├── board_reader/       # NFC matrix scanning
 │   ├── chess_engine/       # Stockfish/UCI integration
 │   └── led_controller/     # LED matrix control
+├── development/            # Throwaway hardware/learning test harnesses
 ├── docs/
 │   └── architecture/       # System diagrams and design notes
 └── tests/
