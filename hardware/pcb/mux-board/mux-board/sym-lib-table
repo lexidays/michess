@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "michess") (type "KiCad") (uri "/home/steve/Repos/michess/hardware/pcb/lib") (options "") (descr ""))
+)
