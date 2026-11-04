@@ -1,12 +1,16 @@
 # mux-switch-tester
 
-Bring-up **step 3**: prove the Analog Devices **ADG1607** multiplexer switches
-to the right channel when the Raspberry Pi tells it to.
+Drives the Analog Devices **ADG1607** multiplexer from a Raspberry Pi. Two
+scripts:
 
-This is a DC test only. No RF, no coils and no reader in the signal path. The
-Pi drives the mux's address and enable pins, and each channel is checked with
-a multimeter on the resistance (Ω) range. The aim is to test one new thing
-(GPIO control of the mux) before any antenna goes through it.
+- `mux_test.py`: bring-up **step 3**. Proves the mux switches to the right
+  channel when the Pi tells it to. A DC test only: no RF, no coils and no
+  reader in the signal path. Each channel is checked with a multimeter on the
+  resistance (Ω) range, so GPIO control of the mux is tested on its own
+  before any antenna goes through it.
+- `mux_select.py`: holds the mux on one channel while ST's reader demo runs in
+  another terminal, for reading tags through the mux (see
+  [Reading tags through the mux](#reading-tags-through-the-mux)).
 
 ## The chip in one paragraph
 
@@ -23,9 +27,10 @@ low, every switch is open whatever the address says.
 - Raspberry Pi 4, Debian 13 (trixie), via a GPIO T-cobbler
 - UNI-T UT61B+ multimeter
 
-A breadboard is fine for this test because it's GPIO only. **Take the breakout
-off the breadboard before any coil is connected:** no breadboard in the antenna
-path.
+A breadboard is fine for the switching test because it's GPIO only. It isn't
+fine for measuring anything with coils connected: breadboard rows and loose
+leads pass RF to each other. A mux board to take the antenna path off the
+breadboard is tracked in [#12](https://github.com/steve-birch/michess/issues/12).
 
 ## Pinout (TSSOP-28)
 
@@ -77,11 +82,8 @@ stay wired and the demo can run at the same time as the mux scripts:
 
 GPIO18 is also left free, as the usual pin for driving NeoPixels later.
 
-**History:** step 3 was first run on GPIO 5, 6, 13 and 19. The switching
-test passed, but those turned out to be four of the demo's LED pins: with
-`mux_select.py` holding them, the demo stopped with `GPIO init failed`, and
-without it the demo would have driven the mux address lines itself. The mux
-was moved to GPIO 17, 27, 22 and 23 the same evening.
+If the demo stops with `GPIO init failed`, something else is holding one of
+its pins. Check every new pin against the list above.
 
 ## Procedure
 
@@ -103,22 +105,51 @@ was moved to GPIO 17, 27, 22 and 23 the same evening.
    for the A side, the B side, and one neighbouring channel that should be off.
    It always sets EN low on exit.
 
-### Meter notes
-
-- Use the Ω setting, not the beep, so every channel gets a number.
-- Touch the probes together first to check lead resistance.
-- Readings take about a second to settle while the meter auto-ranges.
-- **OL** ("overload") on Ω means open circuit: no measurable connection. It's
-  what an off switch should show.
-- An off channel may show a high reading (kΩ or MΩ) instead of OL with the
-  probes one way round. That's the chip's protection diodes, not a fault;
-  swap the probes.
+Record a resistance for every channel rather than just checking for a beep:
+the readings are what show whether all channels behave the same. On the Ω
+range, an off switch should read open circuit (OL on most meters). A high
+reading (kΩ or MΩ) on an off channel with the probes one way round is the
+chip's protection diodes, not a fault; swap the probes.
 
 ### If it fails
 
 - Nothing connects even with EN high: check EN, VDD and both grounds.
 - Every address gives the same channel: an address wire isn't connected.
 - Channels answer in the wrong order: two address wires are swapped.
+
+## Reading tags through the mux
+
+Wiring is **single-ended**: one wire of each coil goes through the mux, and
+the other wires all join on a common return straight back to the reader.
+
+| From | To |
+|---|---|
+| Reader antenna port, red | pin 28 (DA) |
+| Reader antenna port, black | common return |
+| Coil *n*, wire A | S*n*A (coil 1 → pin 19, coil 2 → pin 20, …) |
+| Coil *n*, wire B | common return |
+
+The common return is **not** ground. Both antenna wires carry the RF signal;
+tying either one to the Pi's ground would short half of the reader's antenna
+driver.
+
+The reader's antenna port has no polarity, so "red through the mux" is a
+convention, kept the same on every channel.
+
+To run:
+
+1. In one terminal: `uv run mux_select.py`. Type 1–8 to select a channel,
+   0 to switch everything off, q to quit. Each change opens all switches,
+   sets the new address, then closes only the new channel.
+2. In another: ST's demo (`sudo ./demo/nfc_demo_st25r3916b`, see
+   [`../st25r-reader-tester/`](../st25r-reader-tester/)). The demo keeps
+   working when the channel is changed while it runs.
+
+The mux was powered from **5 V** (pin 1 only) for the first RF test, for more
+headroom for the RF signal. The Pi only drives the mux's control inputs, so
+5 V on the mux can't reach a Pi pin. Whether the RF signal stays within the
+mux's supply rails is still open ([#16](https://github.com/steve-birch/michess/issues/16)), and cross-talk is being characterised
+([#15](https://github.com/steve-birch/michess/issues/15)).
 
 ## Results (29 October 2026): pass
 
@@ -150,7 +181,7 @@ EN low, before and after the run: OL.
   than the absolute value, because every channel needs to behave the same.
 - That's about double the datasheet's ~4.5 Ω headline. Expected: analog
   switches have higher on-resistance at lower supply voltages, and 3.3 V is
-  the bottom of the ADG1607's range. It feeds into the step 5 supply question.
+  the bottom of the ADG1607's range. It feeds into the supply question ([#16](https://github.com/steve-birch/michess/issues/16)).
 - EN low switches everything off.
 
 (The raw CSV from this run recorded OL as `0`; the table above shows it as

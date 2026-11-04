@@ -4,14 +4,13 @@ Bring-up harness for the Elechouse **ST25R3916B MINI** reader on a Raspberry Pi.
 
 ## Running it again
 
-- Check you're on the right branch: `git branch --show-current` should print `feature/1-prototype-reading-a-single-nfc-tag`.
 - In `development/st25r-reader-tester`, run `uv run id_check.py`. Expect `ID=0x31 type=6`.
-- From `vendor/ST25R3916_v2.8.0_Linux_demo_v1.0/linux_demo/build`, run `sudo ./demo/nfc_demo_st25r3916b`; this runs the reader demo, which reads tags with whichever antenna is plugged in. Press `Ctrl+C` to stop it; stop it before swapping antennas.
+- From `vendor/ST25R3916_v2.8.0_Linux_demo_v1.0/linux_demo/build`, run `sudo ./demo/nfc_demo_st25r3916b`; this runs the reader demo, which reads tags with whichever antenna is plugged in. It needs `sudo` (without it: "Error assigning high priority to polling thread"). Press `Ctrl+C` to stop it; stop it before swapping antennas.
 - `vendor/` is git-ignored, so after a fresh clone you need the unpack, edit and build steps later in this document before the demo will run.
 
-## Status (28 Sep 2026)
+## Results
 
-| Goal | Result |
+| Check | Result |
 |---|---|
 | 5V safety check on signal lines | ✅ Pass |
 | Chip ID over SPI (Python) | ✅ `type=6` (ST25R3916B) |
@@ -115,15 +114,12 @@ The driver worked on Trixie without changes, apart from the IRQ pin.
 |---|---|
 | NTAG213 25 mm sticker, flat on the bundled 52 × 5.5 mm antenna, lifted straight up until reads stop | **~31 mm** |
 
-This is the reference for comparing custom coils in bring-up step 4. Elechouse quote ~5 cm with a full-size card, so ~31 mm with a small sticker is in line.
+This is the reference for comparing custom coils ([#14](https://github.com/steve-birch/michess/issues/14)). Elechouse quote ~5 cm with a full-size card, so ~31 mm with a small sticker is in line.
 
 Note: the tag's data block (`E1 10 12 00`) confirms an NDEF-formatted tag with NTAG213 memory size. However, genuine NXP UIDs usually start with `04`, and this one starts with `53`, so it may be a compatible chip from another maker. That's fine for now, but worth remembering if tag performance seems inconsistent.
 
-## AAT status
+## Antenna tuning: no AAT on the MINI
 
-- **28 Sep 2026:** emailed Elechouse asking whether the MINI has varicaps, for the MINI schematic, and for the antenna inductance the matching network is designed for.
-- **Early Oct 2026:** Elechouse confirmed that the MINI has no varicaps, that AAT_A/AAT_B are unconnected, that the matching network is fixed for the bundled ~700 nH antenna, and that no published schematic is available.
+The ST25R3916B chip supports automatic antenna tuning (AAT), but only when the board maker fits variable capacitors driven by its AAT_A/AAT_B outputs. Elechouse confirmed (October 2026) that the MINI has none: AAT_A and AAT_B are unconnected, the matching network is fixed and designed for the bundled ~700 nH antenna, and no schematic is published.
 
-With no AAT, each custom coil is wound to behave like the stock antenna, and the chip's amplitude/phase measurement is used as a fingerprint against the stock antenna's reference values. RFAL may provide `rfalChipMeasureAmplitude` / `rfalChipMeasurePhase` (unverified until checked in the vendor headers).
-
-- **Next step (1h):** record the stock antenna's amplitude and phase as the reference.
+So each custom coil is wound to behave like the stock antenna. The chip can still measure the antenna's amplitude and phase, which is used as a "fingerprint" to compare each coil against the stock antenna. Recording the stock antenna's reference values is tracked in [#13](https://github.com/steve-birch/michess/issues/13). RFAL may provide `rfalChipMeasureAmplitude` / `rfalChipMeasurePhase` (unverified until checked in the vendor headers).

@@ -59,9 +59,7 @@ Before running the software you'll need the physical board assembled and wired. 
 
 ## Development Setup
 
-If you want to work on the codebase without physical hardware, the board reader supports a simulated mode when running the harness that provides it (see the specific harness README under `development/`). For example, some harnesses accept a `--simulate` flag to emulate hardware.
-
-This lets you develop the chess engine integration and LED controller logic without a connected board.
+There's no simulated mode yet: the current code is hardware bring-up harnesses under `development/`, and each needs the real hardware. A simulated board, so the chess engine and LED logic can be developed without one, is planned for the main `software/` stack.
 
 ---
 
@@ -86,4 +84,4 @@ michess/
 
 - Read the [Hardware](hardware.md) page to understand the physical build
 - Read the [Software](software.md) page for architecture details and how to contribute code
-- For prototype development, see the README inside each harness under `development/` (for example `development/nfc-matrix-tester/README.md`) for run instructions and available simulate flags
+- For prototype development, see the README inside each harness under `development/` (start with `development/st25r-reader-tester/README.md`) for wiring and run instructions

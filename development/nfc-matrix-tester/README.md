@@ -1,14 +1,10 @@
 # nfc-matrix-tester
 
-A practice harness for wiring a PN532 NFC reader to a Raspberry Pi and reading tag UIDs: the first step toward the full 64-antenna matrix described in [`docs/hardware.md`](../../docs/hardware.md).
+A practice harness for wiring a PN532 NFC reader to a Raspberry Pi and reading tag UIDs. Single PN532, single antenna, single tag: a Tkinter window shows the last UID read.
 
-## Current stage
-
-Single PN532, single antenna, single tag. A Tkinter window shows the last UID read.
-
-## Where this is going
-
-Once the CD74HC4067 multiplexers are wired up, this grows into an 8×8 grid: `mux.py` will cycle antenna channels between reads, and `display.py` swaps from a single-label window to a grid of 64 cells that light up as tags are detected. Useful for spotting cross-talk, dead antennas, or bad solder joints during assembly without needing the chess engine/LED stack running.
+> **Parked.** This was written for the original design (PN532 readers with CD74HC4067 multiplexers). The project has since moved to the ST25R3916B reader and the ADG1607 multiplexer: see [`../st25r-reader-tester/`](../st25r-reader-tester/) and [`../mux-switch-tester/`](../mux-switch-tester/). The PN532 is kept only as a side experiment.
+>
+> The idea of growing this into an 8×8 grid view, with cells lighting up as tags are detected, still stands, and could be carried over to the new reader. It's useful for spotting cross-talk, dead antennas or bad solder joints without the chess engine or LEDs running.
 
 ## Structure
 

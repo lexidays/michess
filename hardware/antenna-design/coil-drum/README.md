@@ -1,57 +1,60 @@
 # Coil drum
 
-This folder contains a single printed 57 mm chess-square tile for a prototype read coil. The coil sits in a 31.5 mm drum wound between the base plate and a thin top flange that the LED ring passes over. Four locating pegs hold the LED ring in place, with a tail notch for the coil lead and a pocket for the perfboard anchor board.
+A printed 57 mm chess-square tile that carries one square's read coil. The coil is wound on a 31.5 mm drum between the base plate and a thin top flange, like a cotton reel. The square's LED ring sits above the coil on four curved risers, and a small perfboard "anchor board" screws onto two posts at the front edge, where the fragile coil wire joins the lead to the multiplexer.
 
-## Key dimensions
+Everything is positioned by the print, so every square comes out the same.
 
-Values are from the draft 2 model (some spreadsheet-driven, some typed in) or from measuring the real parts. The Source column says which.
+## Current version: draft 3
 
-| Parameter | Value | Source | Notes |
-|---|---:|---|---|
-| Chess-square tile size | 57 mm | Spreadsheet value `square_size` | Printed square tile size |
-| Drum core diameter | 31.5 mm | Spreadsheet value `core_d` | Draft 2 geometry |
-| Base plate thickness | 3.6 mm | Typed in | Draft 2 geometry |
-| Drum overall height | 6.0 mm | Typed in | Winding gap is 2.4 mm |
-| Top flange thickness | 0.6 mm | Typed in | Draft 2 geometry |
-| LED ring hole ID | 35 mm | Measured | Measured 2 Oct 2026 |
-| LED ring OD | 50 mm | Measured | Measured 2 Oct 2026 |
-| LED peg spacing | 32.5 mm | Spreadsheet value `LED_loc_peg_dist` | Locates the LED ring |
-| LED hole diameter | 2.2 mm | Spreadsheet value `LED_loc_hole_dia` | Hole size |
-| LED peg diameter | 1.2 mm | Spreadsheet value `LED_loc_peg_dia` (= `LED_loc_hole_dia` - `clearance`) | Spreadsheet-driven |
-| LED peg height | 5 mm | Typed in | 5 mm from the bottom (1.4 mm above the base plate) |
-| Anchor-board pocket height | 1.6 mm | Typed in | Draft 2 geometry |
-| Anchor-board pocket floor | 0.6 mm | Typed in | Draft 2 geometry |
+Heights are measured from the bottom of the tile (z = 0). Draft 3 is sketched mostly with typed-in values; a parametric rebuild is planned once the design settles ([#18](https://github.com/steve-birch/michess/issues/18)).
+
+| Feature | Value | Notes |
+|---|---:|---|
+| Tile size | 57 mm | Spreadsheet value `square_size` |
+| Base plate | 1.6 mm (0–1.6) | Flat bottom, prints without supports |
+| Drum core diameter | 31.5 mm | Spreadsheet value `core_d`; up to 4.0 mm |
+| Top flange | 33 mm diameter, 4.0–4.6 mm | Thin, to keep the tag close to the coil |
+| Winding gap | 2.4 mm (1.6–4.0) | Room for 3–4 stacked turns of 30 AWG |
+| LED ring risers | 4 curved risers, 19–25 mm radius, 6.0 mm tall | The ring sits on top, above the coil |
+| LED locating pegs | 1.2 mm diameter at 32.5 mm square spacing, 2 mm above the risers | Fit the ring's 2.2 mm mounting holes |
+| Anchor-board posts | Two posts, 3.0 mm tall, either side of the front notch | Wire channel for the coil tails between them |
+| Anchor-board screw holes | 1.8 mm (sized for M2), at x = ±6.375 mm, y = −24.5 mm | Through the full tile height |
+| Front notch | 7.5 mm wide, through the base plate | Soldering-iron access from either side |
+| Corner holes | Four 2.0 mm holes at (±26.5, ±26.5) mm | Through the base plate, for fixing the tile to a frame (frame design not settled) |
+
+Measured parts it's designed around:
+
+| Part | Value |
+|---|---|
+| LED ring | 50 mm outer, 35 mm inner, 2.2 mm mounting holes at 32.5 mm square spacing |
+| Perfboard | 2.54 mm (0.1 inch) pitch |
+
+### Known issues (fixes tracked in [#17](https://github.com/steve-birch/michess/issues/17))
+
+- The prototype tiles use M3 screws, but the holes are sized for M2.
+- There's only 1.4 mm between the top of the anchor board (4.6 mm) and the underside of the LED ring (6.0 mm), so the ring may rest on the screw heads rather than the risers.
 
 ## Files
 
-- `coil-drum.FCStd` — FreeCAD 1.1 development build; it may not open in FreeCAD 1.0. The model is driven by a Spreadsheet of named values.
-- `coil-drum-Body.stl` — committed STL export for review and reproducibility. If the FCStd changes, re-export the STL in the same commit.
+- `coil-drum.FCStd`: FreeCAD 1.1 source. It may not open in FreeCAD 1.0.
+- `coil-drum-Body.stl`: STL export, for printing without FreeCAD. If the FCStd changes, re-export the STL in the same commit.
 
 ## Printing
 
-- Printer: Bambu Lab A1
+- Printer: Bambu Lab A1 (0.4 mm nozzle)
 - Orientation: flat on its base
 - Supports: none
-- Layer height / material: TBD
+- Layer height / material: not yet settled
 
-## History
+## Building a square
 
-### Draft 1
+- Wind 30 AWG (~0.25 mm) enamelled magnet wire on the drum, turns stacked on top of each other. Touching turns are fine: the enamel is the insulation. 3 and 4 turns have both read tags; the final count is being decided by measurement ([#14](https://github.com/steve-birch/michess/issues/14)).
+- Use the same winding direction, tension and tail length on every coil. Consistency between squares matters more than any one value.
+- Anchor board: a 6 × 3 hole piece of perfboard. Screws go through the outer columns of the middle row; the coil wires are soldered in the middle two columns of the bottom row.
+- Keep the lead's two wires twisted from the edge of the anchor board, so they don't form a loop that becomes part of the antenna.
 
-- Walled winding channel
-- Too hard to wind
+## Revisions
 
-### Draft 2
-
-- Top flange added
-- No wall, flat bottom
-- First coil: 3 turns of 30 AWG, wired directly to the ST25R3916B MINI
-- Reads an NTAG213 tag
-- Rough check only (not measured): read distance looked at least as good as the stock antenna's ~31 mm
-- Placing the LED ring (unpowered) over it seemed to reduce the distance
-- Known problem: the anchor-board pocket printed mangled, possibly because of the unsupported roof bridge, and the board does not fit; this is to be fixed in draft 3
-
-## Notes
-
-- The design currently mixes spreadsheet-driven values and a few hard-coded values; a tidy-up is still pending.
-- The board anchor pocket and the tail notch are in the model.
+- **Draft 1:** walled winding channel around the drum. Too hard to wind.
+- **Draft 2:** top flange instead of the wall; friction-fit pocket for the anchor board. The pocket's roof is an unsupported bridge and printed badly.
+- **Draft 3:** anchor board screwed onto two posts (no pocket), slot under it for soldering access, LED ring moved onto risers above the coil.
