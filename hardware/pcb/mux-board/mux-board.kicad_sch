@@ -1191,16 +1191,6 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 93.98) (xy 133.35 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "05eb503c-b335-4e4d-ae1c-28bc16b81892")
-	)
-	(wire
-		(pts
 			(xy 114.3 76.2) (xy 133.35 76.2)
 		)
 		(stroke
@@ -1651,6 +1641,16 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 93.98) (xy 133.35 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f0d11ff0-a08e-4cf2-942c-4fa5a9a15a74")
+	)
+	(wire
+		(pts
 			(xy 114.3 116.84) (xy 133.35 116.84)
 		)
 		(stroke
@@ -1860,7 +1860,7 @@
 		(uuid "8b59b5b4-e55d-4587-af67-2fcb33c0aed0")
 	)
 	(label "S5A"
-		(at 114.4326 93.98 0)
+		(at 114.3 93.98 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1919,7 +1919,7 @@
 		)
 		(uuid "96dd4086-4969-48ea-93e5-0691de85dfaa")
 	)
-	(label "A0"
+	(label "DB"
 		(at 165.1 114.3 0)
 		(effects
 			(font
