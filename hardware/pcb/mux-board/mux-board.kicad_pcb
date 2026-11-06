@@ -90,13 +90,13 @@
 	(footprint "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "0f6bff1e-6cee-4f17-a83a-852bfa439f10")
-		(at 111 128.85 90)
+		(at 124 128.85 90)
 		(descr "Resistor, Axial_DIN0309 series, Axial, Horizontal, pin pitch=12.7mm, 0.5W = 1/2W, length*diameter=9*3.2mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0309 series Axial Horizontal pin pitch 12.7mm 0.5W = 1/2W length 9mm diameter 3.2mm")
 		(property "Reference" "R2"
 			(at 6.35 -2.72 90)
 			(layer "F.SilkS")
-			(uuid "fd839cee-841a-4eb5-a647-b12f869f2785")
+			(uuid "0a7494ed-ae81-4cb3-9314-c61f99bc6b1c")
 			(effects
 				(font
 					(size 1 1)
@@ -107,7 +107,7 @@
 		(property "Value" "47k"
 			(at 6.35 2.72 90)
 			(layer "F.Fab")
-			(uuid "f79c0daa-00e2-49af-8724-664f4333a85c")
+			(uuid "05508762-8bda-43ae-aa94-5291ea018607")
 			(effects
 				(font
 					(size 1 1)
@@ -119,7 +119,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "fee4e91e-e407-4389-a7df-1f29dcf7d79c")
+			(uuid "1135ea9c-8fbc-46ce-9176-2e2e5db83e71")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -130,7 +130,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "dbcd4ba2-db4a-4dc3-aea0-16546f89bb64")
+			(uuid "d0c060d6-b81d-4a75-aa32-a3afe3eca12d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -884,7 +884,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "210b4ce5-1c4d-4c9e-9f3f-d02075ca1439")
-		(at 155 140)
+		(at 115 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP9"
@@ -2629,7 +2629,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "45ebaab8-2d13-4ec8-8c1a-a9731e639fee")
-		(at 130 140)
+		(at 140 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP4"
@@ -2881,7 +2881,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "4a3bff1b-b3c8-49c4-88c7-b2e372027709")
-		(at 115 140)
+		(at 155 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP1"
@@ -4225,7 +4225,7 @@
 	(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "59c55111-8576-4a8d-9e30-c87fd6dc6bd9")
-		(at 145 128)
+		(at 149.9625 127)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing)")
 		(tags "capacitor handsolder")
 		(property "Reference" "C2"
@@ -4500,7 +4500,7 @@
 	(footprint "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "82a06f0f-f505-4de8-b0ff-56a8e372c3d9")
-		(at 104 128.85 90)
+		(at 120 128.85 90)
 		(descr "Resistor, Axial_DIN0309 series, Axial, Horizontal, pin pitch=12.7mm, 0.5W = 1/2W, length*diameter=9*3.2mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0309 series Axial Horizontal pin pitch 12.7mm 0.5W = 1/2W length 9mm diameter 3.2mm")
 		(property "Reference" "R1"
@@ -4882,7 +4882,7 @@
 	(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "9136e0a4-60f1-4573-81c0-e9f6b4bc8c9f")
-		(at 140 128)
+		(at 146 127)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing)")
 		(tags "capacitor handsolder")
 		(property "Reference" "C1"
@@ -5040,7 +5040,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "919f2027-e317-427b-a892-3c71bbf55ec3")
-		(at 145 140)
+		(at 125 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP7"
@@ -5661,7 +5661,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "9dbfd867-9bee-42c0-97b6-1e1ef0a6be62")
-		(at 125 140)
+		(at 145 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP3"
@@ -5913,7 +5913,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "a0f9bc1c-f56f-4fc4-a1ba-fa5a1c659a6a")
-		(at 120 140)
+		(at 150 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP2"
@@ -7296,7 +7296,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "c92a70b1-9112-4e16-8e0d-323008d9b4c0")
-		(at 136 120)
+		(at 110 140)
 		(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x02 2.54mm single row")
 		(property "Reference" "J9"
@@ -7537,7 +7537,7 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "d741afc1-00ab-4597-b8ae-e4dd9686b70d")
-		(at 150 140)
+		(at 120 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP8"
@@ -8234,7 +8234,7 @@
 	(footprint "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "eb4ebb98-b2bb-4d0c-a264-202aea57462f")
-		(at 118 128.85 90)
+		(at 128 128.85 90)
 		(descr "Resistor, Axial_DIN0309 series, Axial, Horizontal, pin pitch=12.7mm, 0.5W = 1/2W, length*diameter=9*3.2mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0309 series Axial Horizontal pin pitch 12.7mm 0.5W = 1/2W length 9mm diameter 3.2mm")
 		(property "Reference" "R3"
@@ -9009,7 +9009,7 @@
 	(footprint "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "f3b701de-d554-44f7-9067-5c0c3c62bb6f")
-		(at 125 128.85 90)
+		(at 132 128.85 90)
 		(descr "Resistor, Axial_DIN0309 series, Axial, Horizontal, pin pitch=12.7mm, 0.5W = 1/2W, length*diameter=9*3.2mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0309 series Axial Horizontal pin pitch 12.7mm 0.5W = 1/2W length 9mm diameter 3.2mm")
 		(property "Reference" "R4"
@@ -9317,13 +9317,13 @@
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "ffb96510-d921-4392-97f7-0700455e8e2b")
-		(at 140 140)
+		(at 130 140)
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "JP6"
 			(at 0 -2.38 0)
 			(layer "F.SilkS")
-			(uuid "9194939a-2550-4610-82ed-cce2eb753c43")
+			(uuid "e570b2f4-4966-4e9b-9e60-525f0d26bbd5")
 			(effects
 				(font
 					(size 1 1)
@@ -9334,7 +9334,7 @@
 		(property "Value" "SE-DIFF"
 			(at 0 7.46 0)
 			(layer "F.Fab")
-			(uuid "e8da8085-b673-4260-98ed-515112508143")
+			(uuid "5956e6a2-3466-4619-b41b-e77d43175598")
 			(effects
 				(font
 					(size 1 1)
@@ -9346,7 +9346,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5fb8197d-f093-41e1-a94f-b36537439079")
+			(uuid "55ca2ec8-66dd-420a-9ccd-ee6d23e0c8fc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9357,7 +9357,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e992d94d-5170-443c-9e60-950382d91cde")
+			(uuid "5a216168-7a71-4c0e-8ac1-c62ba199abb4")
 			(effects
 				(font
 					(size 1.27 1.27)
