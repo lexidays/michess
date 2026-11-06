@@ -590,6 +590,10 @@
       {
         "netclass": "PWR",
         "pattern": "VSS"
+      },
+      {
+        "netclass": "Antenna paths",
+        "pattern": "*COMMON"
       }
     ]
   },
