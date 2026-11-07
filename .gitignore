@@ -44,6 +44,7 @@ hardware/pcb/**/*.rpt
 hardware/pcb/**/*.net
 hardware/pcb/**/*.xml
 hardware/pcb/**/*.zip
+.history/
 
 # ── EasyEDA / other PCB tools ─────────────────────────────────────────────────
 *.epro
