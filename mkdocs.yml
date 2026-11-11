@@ -1,8 +1,8 @@
 site_name: michess
 site_description: An open-source NFC-based smart chess board powered by a Raspberry Pi
 site_url: https://docs.michess.dev/
-repo_url: https://github.com/steve-birch/michess
-repo_name: steve-birch/michess
+repo_url: https://github.com/lexidays/michess
+repo_name: lexidays/michess
 
 theme:
   name: material

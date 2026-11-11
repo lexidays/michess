@@ -6,7 +6,7 @@ Everything is positioned by the print, so every square comes out the same.
 
 ## Current version: draft 3
 
-Heights are measured from the bottom of the tile (z = 0). Draft 3 is sketched mostly with typed-in values; a parametric rebuild is planned once the design settles ([#18](https://github.com/steve-birch/michess/issues/18)).
+Heights are measured from the bottom of the tile (z = 0). Draft 3 is sketched mostly with typed-in values; a parametric rebuild is planned once the design settles ([#18](https://github.com/lexidays/michess/issues/18)).
 
 | Feature | Value | Notes |
 |---|---:|---|
@@ -29,7 +29,7 @@ Measured parts it's designed around:
 | LED ring | 50 mm outer, 35 mm inner, 2.2 mm mounting holes at 32.5 mm square spacing |
 | Perfboard | 2.54 mm (0.1 inch) pitch |
 
-### Known issues (fixes tracked in [#17](https://github.com/steve-birch/michess/issues/17))
+### Known issues (fixes tracked in [#17](https://github.com/lexidays/michess/issues/17))
 
 - The prototype tiles use M3 screws, but the holes are sized for M2.
 - There's only 1.4 mm between the top of the anchor board (4.6 mm) and the underside of the LED ring (6.0 mm), so the ring may rest on the screw heads rather than the risers.
@@ -48,7 +48,7 @@ Measured parts it's designed around:
 
 ## Building a square
 
-- Wind 30 AWG (~0.25 mm) enamelled magnet wire on the drum, turns stacked on top of each other. Touching turns are fine: the enamel is the insulation. 3 and 4 turns have both read tags; the final count is being decided by measurement ([#14](https://github.com/steve-birch/michess/issues/14)).
+- Wind 30 AWG (~0.25 mm) enamelled magnet wire on the drum, turns stacked on top of each other. Touching turns are fine: the enamel is the insulation. 3 and 4 turns have both read tags; the final count is being decided by measurement ([#14](https://github.com/lexidays/michess/issues/14)).
 - Use the same winding direction, tension and tail length on every coil. Consistency between squares matters more than any one value.
 - Anchor board: a 6 × 3 hole piece of perfboard. Screws go through the outer columns of the middle row; the coil wires are soldered in the middle two columns of the bottom row.
 - Keep the lead's two wires twisted from the edge of the anchor board, so they don't form a loop that becomes part of the antenna.
