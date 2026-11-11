@@ -30,7 +30,7 @@ low, every switch is open whatever the address says.
 A breadboard is fine for the switching test because it's GPIO only. It isn't
 fine for measuring anything with coils connected: breadboard rows and loose
 leads pass RF to each other. A mux board to take the antenna path off the
-breadboard is tracked in [#12](https://github.com/steve-birch/michess/issues/12).
+breadboard is tracked in [#12](https://github.com/lexidays/michess/issues/12).
 
 ## Pinout (TSSOP-28)
 
@@ -148,8 +148,8 @@ To run:
 The mux was powered from **5 V** (pin 1 only) for the first RF test, for more
 headroom for the RF signal. The Pi only drives the mux's control inputs, so
 5 V on the mux can't reach a Pi pin. Whether the RF signal stays within the
-mux's supply rails is still open ([#16](https://github.com/steve-birch/michess/issues/16)), and cross-talk is being characterised
-([#15](https://github.com/steve-birch/michess/issues/15)).
+mux's supply rails is still open ([#16](https://github.com/lexidays/michess/issues/16)), and cross-talk is being characterised
+([#15](https://github.com/lexidays/michess/issues/15)).
 
 ## Results (29 October 2026): pass
 
@@ -181,7 +181,7 @@ EN low, before and after the run: OL.
   than the absolute value, because every channel needs to behave the same.
 - That's about double the datasheet's ~4.5 Ω headline. Expected: analog
   switches have higher on-resistance at lower supply voltages, and 3.3 V is
-  the bottom of the ADG1607's range. It feeds into the supply question ([#16](https://github.com/steve-birch/michess/issues/16)).
+  the bottom of the ADG1607's range. It feeds into the supply question ([#16](https://github.com/lexidays/michess/issues/16)).
 - EN low switches everything off.
 
 (The raw CSV from this run recorded OL as `0`; the table above shows it as

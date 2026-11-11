@@ -114,7 +114,7 @@ The driver worked on Trixie without changes, apart from the IRQ pin.
 |---|---|
 | NTAG213 25 mm sticker, flat on the bundled 52 × 5.5 mm antenna, lifted straight up until reads stop | **~31 mm** |
 
-This is the reference for comparing custom coils ([#14](https://github.com/steve-birch/michess/issues/14)). Elechouse quote ~5 cm with a full-size card, so ~31 mm with a small sticker is in line.
+This is the reference for comparing custom coils ([#14](https://github.com/lexidays/michess/issues/14)). Elechouse quote ~5 cm with a full-size card, so ~31 mm with a small sticker is in line.
 
 Note: the tag's data block (`E1 10 12 00`) confirms an NDEF-formatted tag with NTAG213 memory size. However, genuine NXP UIDs usually start with `04`, and this one starts with `53`, so it may be a compatible chip from another maker. That's fine for now, but worth remembering if tag performance seems inconsistent.
 
@@ -122,4 +122,4 @@ Note: the tag's data block (`E1 10 12 00`) confirms an NDEF-formatted tag with N
 
 The ST25R3916B chip supports automatic antenna tuning (AAT), but only when the board maker fits variable capacitors driven by its AAT_A/AAT_B outputs. Elechouse confirmed (October 2026) that the MINI has none: AAT_A and AAT_B are unconnected, the matching network is fixed and designed for the bundled ~700 nH antenna, and no schematic is published.
 
-So each custom coil is wound to behave like the stock antenna. The chip can still measure the antenna's amplitude and phase, which is used as a "fingerprint" to compare each coil against the stock antenna. Recording the stock antenna's reference values is tracked in [#13](https://github.com/steve-birch/michess/issues/13). RFAL may provide `rfalChipMeasureAmplitude` / `rfalChipMeasurePhase` (unverified until checked in the vendor headers).
+So each custom coil is wound to behave like the stock antenna. The chip can still measure the antenna's amplitude and phase, which is used as a "fingerprint" to compare each coil against the stock antenna. Recording the stock antenna's reference values is tracked in [#13](https://github.com/lexidays/michess/issues/13). RFAL may provide `rfalChipMeasureAmplitude` / `rfalChipMeasurePhase` (unverified until checked in the vendor headers).

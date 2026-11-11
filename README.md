@@ -63,7 +63,7 @@ See [`hardware/bom/`](hardware/bom/) for a full bill of materials with UK suppli
 
 ```bash
 # Clone the repo
-git clone https://github.com/steve-birch/michess.git
+git clone https://github.com/lexidays/michess.git
 cd michess
 
 # Create a Python virtual environment

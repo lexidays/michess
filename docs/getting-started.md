@@ -19,7 +19,7 @@ This guide covers cloning the repo, setting up the software environment on a Ras
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/steve-birch/michess.git
+git clone https://github.com/lexidays/michess.git
 cd michess
 ```
 
