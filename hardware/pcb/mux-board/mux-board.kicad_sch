@@ -10,7 +10,7 @@
 		(rev "A")
 		(company "michess.dev")
 		(comment 1 "ADG1607 8-channel antenna multiplexer for the 4-square prototype")
-		(comment 2 "github.com/steve-birch/michess")
+		(comment 2 "github.com/lexidays/michess")
 		(comment 3 "Licence: CERN-OHL-S v2")
 	)
 	(lib_symbols
