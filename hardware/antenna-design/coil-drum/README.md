@@ -18,7 +18,7 @@ Heights are measured from the bottom of the tile (z = 0). Positions are from the
 | Winding gap | 2.4 mm (2.0–4.4) | `drum_wind_gap`. Room for 3–4 stacked turns of 30 AWG |
 | Top flange | 33 mm diameter, 0.6 mm thick (4.4–5.0) | `drum_flange_t`. Thin, to keep the tag close to the coil. Must pass through the LED ring's 35 mm hole |
 | LED ring | Sits flush on the base plate (from z = 2.0) | No risers |
-| LED locating pegs | Four 2.0 mm pegs, 4.0 mm tall (2 mm above the plate), at 33 mm square spacing | `led_loc_peg_dist`, `led_loc_peg_dia` (ring hole 2.2 mm minus 0.2 mm clearance) |
+| LED locating pegs | Four 2.0 mm pegs, 4.0 mm tall (2 mm above the plate), at 32.8 mm square spacing | `led_loc_peg_dist`, `led_loc_peg_dia` (ring hole 2.2 mm minus 0.2 mm clearance) |
 | Coil connector board screw holes | 2.6 mm, at x = ±6.35, y = −21.15 | Through the base plate. Sized for an M3 to cut its own thread |
 | Corner notches | 5.2 mm radius quarter circles at each corner | Clear the frame's 10 mm bosses ([#26](https://github.com/lexidays/michess/issues/26)) |
 
@@ -28,7 +28,7 @@ Measured parts it's designed around:
 
 | Part | Value |
 |---|---|
-| LED ring | 50 mm outer, 35 mm inner, 2.2 mm mounting holes at 33 mm square spacing |
+| LED ring | 50 mm outer, 35 mm inner, 2.2 mm mounting holes at 32.8 mm square spacing |
 | Coil connector board | 20.32 × 12.7 × 1.6 mm, M3 holes 12.7 mm apart. See [`hardware/pcb/coil-connector-board/`](../../pcb/coil-connector-board/) |
 
 ### Still to settle (tracked in [#17](https://github.com/lexidays/michess/issues/17))
